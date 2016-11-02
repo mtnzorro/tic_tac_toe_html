@@ -34,7 +34,7 @@ $('.square').click(function(){
 
   var ai_guess = Math.floor(Math.random() * 9);
   while ($('#' + ai_guess).text() !== ''){
-    if(count > 7){
+    if(count >= 8){
       break;
     } else{
       ai_guess = Math.floor(Math.random() * 9);
@@ -90,13 +90,19 @@ return x || y;
     console.log('active_board', JSON.stringify(active_board));
      if (tictactoe(active_board)){
        console.log('winner is ', tictactoe(active_board));
+       if (xwin === 2){
+        $('h2').addClass('animated bounce');
+      }
+
         $(".the_winner").text("The Winner is: " + tictactoe(active_board)).show();
         if (tictactoe(active_board) === 'X'){
           xwin += 1;
           $('.x_score').text(xwin);
+          // $('.square').prop("disabled", true);
         } else{
           owin += 1;
           $('.o_score').text(owin);
+          // $('.square').prop("disabled", true);
         }
         board = ["","","","","","","","",""];
         turn = true;

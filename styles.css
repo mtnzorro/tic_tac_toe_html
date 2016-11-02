@@ -1,0 +1,59 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+h1, h2{
+  margin: 0;
+
+}
+
+.heading{
+  text-align: center;
+  background-color: dodgerblue;
+  margin: 0;
+  padding: 20px;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.board{
+  display: inline=block;
+  text-align: center;
+  background-color: lightgrey;
+
+}
+
+.scoreboard{
+  display: block;
+  text-align: center;
+  background: dodgerblue;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.winning{
+  font-family: 'Press Start 2P', cursive;
+  background: yellow;
+  text-align: center;
+  padding: 30px;
+}
+
+table, th, td{
+  display: inline-block;
+   padding: 10px;
+   margin: 0;
+   text-align: center;
+   font-family: 'Press Start 2P', cursive;
+
+}
+
+.square{
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  font-size: 30px;
+  margin: 0;
+  background-color: darkgrey;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
