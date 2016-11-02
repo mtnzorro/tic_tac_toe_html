@@ -3,6 +3,7 @@ var start_square = "";
 var turn = true;
 var xwin = 0;
 var owin = 0;
+count = 0;
 function chunk(arr, size) {
     var mainArray = [];
     var subArray = [];
@@ -34,6 +35,7 @@ $('.square').click(function(){
     console.log(position);
     board[position] = player;
     var active_board = chunk(board,3);
+    count += 1;
     turn = !turn;
 
     function tictactoe(mat) {
@@ -61,7 +63,7 @@ $('.square').click(function(){
     function matches(a,b,c){
       return a === b && b === c && b!== '';
     }
-
+    console.log('active_board', JSON.stringify(active_board));
      if (tictactoe(active_board)){
         $(".the_winner").text("The Winner is: " + tictactoe(active_board)).show();
         if (tictactoe(active_board) === 'X'){
@@ -75,6 +77,14 @@ $('.square').click(function(){
         turn = true;
         $('.square').text('');
 
+     }
+     if (count === 9){
+       $(".the_winner").text("The Winner is: NO ONE!").show();
+       board = ["","","","","","","","",""];
+       turn = true;
+       active_board = [];
+       $('.square').text('');
+       count = 0;
      }
 }
 // else if ($(this).text() === 'O'){

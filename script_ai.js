@@ -45,6 +45,8 @@ $('.square').click(function(){
   // console.log(ai_guess);
 
 $('#'+ai_guess).text(player);
+
+
 position = parseInt($('#'+ai_guess).attr('name'));
 // console.log(position);
 used_positions.push(position);
