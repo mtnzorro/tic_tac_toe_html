@@ -11,10 +11,6 @@ function Board(){
 }
 
 Board.prototype.tictactoe = function(position){
-  console.log("topl" + this.topLeft);
-  console.log("topm" + this.topMid);
-  console.log("topr" +this.topRight);
-
   if (
    (this.topLeft && this.topMid && this.topRight) ||
    (this.btmLeft && this.btmMid && this.btmRight) ||
@@ -34,7 +30,7 @@ Board.prototype.tictactoe = function(position){
 };
 
 board = new Board();
-board.topLeft = "";
+board.topLeft = "X";
 board.topMid = "X";
 board.topRight = "X";
 board.tictactoe("X", "O");

@@ -1,26 +1,26 @@
 function Board(){
-  this.topLeft = '';
-  this.topMid = '';
-  this.topRight = '';
-  this.midLeft = '';
-  this.mid = '';
-  this.midRight = '';
-  this.btmLeft = '';
-  this.btmMid = '';
-  this.btmRight = '';
+  this.topLeft = 'p';
+  this.topMid = 'r';
+  this.topRight = 's';
+  this.midLeft = 't';
+  this.mid = 'u';
+  this.midRight = 'v';
+  this.btmLeft = 'w';
+  this.btmMid = 'y';
+  this.btmRight = 'z';
 }
 
 Board.prototype.tictactoe = function(position){
   if (
    (this.topLeft === this.topMid && this.topMid === this.topRight) ||
-   (this.btmLeft === this.btmMid && this.btmMid === this.btmRight) ||
+   (this.btmLeft === this.btmMid  &&  this.btmMid === this.btmRight) ||
    (this.topLeft === this.midLeft && this.midLeft === this.btmLeft) ||
-   (this.topRight === this.midRight && this. midRight === this.btmRight) ||
-   (this.midLeft === this.mid && this.mid === this.midRight) ||
+   (this.topRight === this.midRight  && this.midRight === this.btmRight) ||
+   (this.midLeft === this.mid &&  this.mid === this.midRight) ||
    (this.topMid === this.mid && this.mid === this.btmMid) ||
-   (this.topLeft === this.mid && this. mid === this.btmRight) ||
-   (this.btmLeft === this.mid && this.mid === this.topRight)
-  ) {
+   (this.topLeft === this.mid &&  this.mid === this.btmRight) ||
+   (this.btmLeft === this.mid &&  this.mid === this.topRight)
+  ){
    return position;
 
   }
@@ -39,7 +39,7 @@ $('.square').click(function(){
   if (turn){
     player = 'X';
   }
-  else{
+  else if (turn === false){
     player = 'O';
   }
   if ($(this).text() === ''){
@@ -48,11 +48,11 @@ $('.square').click(function(){
     console.log("position" + position);
     board[position] = player;
     console.log(board);
-    var tictactoe_check = board.tictactoe(position);
+    var tictactoe_check = board.tictactoe(player);
     console.log("tictactoe_check " + tictactoe_check );
-     if (tictactoe_check){
+     if (tictactoe_check === "X" || tictactoe_check === "O"){
        console.log('we have a winner: '+player);
-        $(".the_winner").text("The Winner is: " + tictactoe_check);
+        $(".the_winner").text("The Winner is: " + tictactoe_check).show();
         if (tictactoe_check === 'X'){
           xwin += 1;
           $('.x_score').text(xwin);
@@ -60,10 +60,10 @@ $('.square').click(function(){
           owin += 1;
           $('.o_score').text(owin);
         }
-        // board = new Board();
-        // turn = true;
-        // count = 0;
-        // $('.square').text('');
+        board = new Board();
+        turn = true;
+        count = 0;
+        $('.square').text('');
 
      }
      if (count === 9){
