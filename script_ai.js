@@ -4,7 +4,9 @@ var turn = true;
 var xwin = 0;
 var owin = 0;
 var count = 0;
-var used_positions = [];
+var remover
+var player_positions = [0,1,2,3,4,5,6,7,8];
+var ai_positions = [];
 function chunk(arr, size) {
     var mainArray = [];
     var subArray = [];
@@ -18,6 +20,17 @@ function chunk(arr, size) {
     return mainArray;
 }
 
+shuffle = function(arr){
+var m = arr.length, t, i;
+while (m) {
+i = Math.floor(Math.random() * m--);
+ t = arr[m];
+ arr[m] = arr[i];
+ arr[i] = t;
+}
+return arr;
+};
+
 $('.square').click(function(){
   $(".the_winner").hide();
     player = 'X';
@@ -25,37 +38,39 @@ $('.square').click(function(){
     $(this).text(player);
     var position = parseInt($(this).attr('name'));
     // console.log(position);
-    used_positions.push(position);
+    for (i = 0; i < player_positions.length; i++){
+      if (player_positions[i] === position){
+        player_positions.splice(position,1);
+        console.log("The splice! Yes.");
+      }
+    }
+    ai_positions = player_positions;
+    console.log("ai position pre shuffle:" + ai_positions);
+    shuffle(ai_positions);
+    console.log("ai position post shuffle:" + ai_positions);
+    remover = ai_positions[ai_positions.length - 1];
+    for (i = 0; i < player_positions.length; i++){
+      if (player_positions[i] === remover){
+        player_positions.splice(position,1);
+        console.log("The splice again! Yes.");
+      }
+    }
+    ai_guess = ai_positions.pop();
+    ai_positions = player_positions;
+    console.log("ai guess:" + ai_guess);
     board[position] = player;
     count += 1;
 
+ai = 'O';
 
-  player = 'O';
-
-  var ai_guess = Math.floor(Math.random() * 9);
-  while ($('#' + ai_guess).text() !== ''){
-    if(count >= 8){
-      break;
-    } else{
-      ai_guess = Math.floor(Math.random() * 9);
-    }
-  }
-
-  // console.log('used positions', used_positions);
-  // console.log(ai_guess);
-
-$('#'+ai_guess).text(player);
-
-
-position = parseInt($('#'+ai_guess).attr('name'));
-// console.log(position);
-used_positions.push(position);
-board[position] = player;
+$('#'+ai_guess).text(ai);
+// position = parseInt($('#'+ai_guess).attr('name'));
+board[ai_guess] = ai;
 count += 1;
 player = 'X';
 var active_board = chunk(board,3);
 // console.log(active_board);
-console.log(count);
+console.log("Count = " + count);
 
 function tictactoe(board) {
 

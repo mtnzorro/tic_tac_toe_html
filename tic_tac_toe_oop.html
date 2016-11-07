@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tic-Tac-Toe</title>
+    <script src="jquery-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="animate.css" media="screen" title="no title">
+    <link rel="stylesheet" href="styles.css" media="screen" title="no title">
+  </head>
+  <body>
+    <div class="heading">
+      <h1 class = "animated rubberBand">TIC-TAC-TOE</h1>
+    </div>
+<div class="board">
+<table>
+  <tr>
+    <td>
+      <button id = "0" class = "square animated fadeInUp" type="button" name="topLeft"></button>
+    </td>
+    <td>
+      <button id = "1" class = "square animated fadeInUp" type="button" name="topMid"></button>
+    </td>
+    <td>
+      <button id = "2" class = "square animated fadeInUp" type="button" name="topRight"></button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button id = "3" class = "square animated fadeInUp" type="button" name="midLeft"></button>
+    </td>
+    <td>
+      <button id = "4" class = "square animated fadeInUp" type="button" name="mid"></button>
+    </td>
+    <td>
+      <button id = "5" class = "square animated fadeInUp" type="button" name="midRight"></button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button id = "6" class = "square animated fadeInUp" type="button" name="btmLeft"></button>
+    </td>
+    <td>
+      <button id = "7" class = "square animated fadeInUp" type="button" name="btmMid"></button>
+    </td>
+    <td>
+      <button id = "8" class = "square animated fadeInUp" type="button" name="btmRight"></button>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="scoreboard">
+  <table>
+    <tr>
+      <td>
+        Wins for X:
+      </td>
+      <td>
+        <p class = "x_score">
+
+        </p>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Wins for O:
+      </td>
+      <td>
+        <p class="o_score">
+
+        </p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="winning">
+  <h2 class="the_winner"></h2>
+</div>
+<script src="oop_js.js"></script>
+  </body>
+</html>
